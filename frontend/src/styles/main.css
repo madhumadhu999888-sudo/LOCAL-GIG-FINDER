@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap');
+
+/* ─── Design Tokens (Premium Modern Theme) ───────────────── */
+:root {
+  /* Backgrounds */
+  --gn-bg:           #ffffff;
+  --gn-surface:      #ffffff;
+  --gn-card:         rgba(255, 255, 255, 0.98);
+  
+  /* Text - REFINED HIERARCHY */
+  --gn-text:         #0f172a; /* Slate 900 */
+  --gn-text-2:       #334155; /* Slate 700 */
+  --gn-muted:        #64748b; /* Slate 500 */
+  --font-weight-base: 500;   /* Modern & Clean */
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Global Accents */
+  --gn-primary:        #2563eb;
+  --gn-primary-hover:  #1d4ed8;
+
+  /* Typography */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm: 0.8rem;
+  --radius:    1.2rem;
+  --radius-lg: 1.8rem;
+  --radius-xl: 2.5rem;
+
+  /* Shadows - SOFTER & MORE PREMIUM */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+  --shadow:    0 10px 30px -10px rgba(0,0,0,0.08);
+  --shadow-lg: 0 25px 60px -15px rgba(0,0,0,0.12);
+  
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Page Specific Identities ───────────────────────────────────── */
+
+.theme-login {
+  --page-gradient: radial-gradient(at 0% 0%, #fff7ed 0, transparent 50%), 
+                   radial-gradient(at 100% 0%, #fff1f2 0, transparent 50%), 
+                   radial-gradient(at 50% 100%, #fed7aa 0, transparent 50%),
+                   #ffffff;
+  --theme-accent: #f97316; /* Orange 500 */
+  --theme-accent-soft: rgba(249, 115, 22, 0.05);
+  --theme-btn-bg: #f97316;
+  --theme-btn-hover: #ea580c;
+  --form-title: #0f172a; 
+  --form-label: #475569;
+}
+
+.theme-signup {
+  --page-gradient: radial-gradient(at 0% 0%, #f0fdf4 0, transparent 50%), 
+                   radial-gradient(at 100% 0%, #f0f9ff 0, transparent 50%), 
+                   radial-gradient(at 50% 100%, #dcfce7 0, transparent 50%),
+                   #ffffff;
+  --theme-accent: #22c55e; /* Green 500 */
+  --theme-accent-soft: rgba(34, 197, 94, 0.05);
+  --theme-btn-bg: #22c55e;
+  --theme-btn-hover: #16a34a;
+  --form-title: #0f172a;
+  --form-label: #475569;
+}
+
+.theme-yellow {
+  --page-gradient: radial-gradient(at 0% 0%, #fffbeb 0, transparent 50%), 
+                   radial-gradient(at 100% 0%, #fef9c3 0, transparent 50%), 
+                   radial-gradient(at 50% 100%, #fde68a 0, transparent 50%),
+                   #fffcf0; /* Premium Maize/Cream Mesh */
+  --theme-accent: #d97706; /* Amber 600 */
+  --theme-accent-soft: rgba(217, 119, 6, 0.08);
+  --theme-btn-bg: #1e293b;
+  --theme-btn-hover: #0f172a;
+}
+
+.theme-worker {
+  --page-gradient: linear-gradient(135deg, #f0f7ff 0%, #dbeafe 100%); /* Light Blue */
+  --theme-accent: #3b82f6; /* Blue 500 */
+  --theme-accent-soft: rgba(59, 130, 246, 0.1);
+  --theme-btn-bg: #3b82f6;
+  --theme-btn-hover: #2563eb;
+}
+
+.theme-business {
+  --page-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); /* Mint Green */
+  --theme-accent: #059669; /* Emerald-600 */
+  --theme-accent-soft: rgba(5, 150, 105, 0.1);
+  --theme-btn-bg: #059669;
+  --theme-btn-hover: #047857;
+}
+
+.theme-admin {
+  --page-gradient: linear-gradient(135deg, #f0f9ff 0%, #dcfce7 100%); /* Blue to Mint/Cyan */
+  --theme-accent: #0ea5e9; /* Sky-500 */
+  --theme-accent-soft: rgba(14, 165, 233, 0.1);
+  --theme-btn-bg: #0f172a; /* Dark Slate for contrast */
+  --theme-btn-hover: #1e293b;
+}
+
+.theme-home {
+  --page-gradient: linear-gradient(135deg, #f0f7ff 0%, #e0f0ff 100%); /* Lightest Blue-Cyan */
+  --theme-accent: #0284c7; /* Sky 600 */
+  --theme-accent-soft: rgba(2, 132, 199, 0.12);
+  --theme-btn-bg: #0284c7;
+  --theme-btn-hover: #0369a1;
+}
+
+/* ─── Reset & Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page-gradient, #f8fafc);
+  color: var(--gn-text);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-base); /* EVERYTHING IS BOLD */
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Components ──────────────────────────────────────────────────── */
+
+/* Input Styling */
+.input-wrap {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-dark {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius);
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: var(--gn-text);
+  font-weight: 600;
+  transition: all 0.25s var(--ease-spring);
+  font-size: 0.95rem;
+}
+
+.input-dark:focus {
+  outline: none;
+  border-color: var(--theme-accent);
+  box-shadow: 0 0 0 4px var(--theme-accent-soft);
+  transform: translateY(-1px);
+}
+
+/* Eye Icon / Password Toggle */
+.pass-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--gn-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.pass-toggle:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--theme-accent);
+}
+
+/* Buttons - DYNAMIC COLORS ────────────────────────────────────────── */
+.btn-primary {
+  background: var(--theme-btn-bg, var(--gn-primary));
+  color: white;
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+  box-shadow: 0 4px 10px -2px rgba(var(--theme-accent), 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: var(--theme-btn-hover, var(--gn-primary-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -4px rgba(var(--theme-accent), 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--theme-accent);
+  border: 2px solid var(--theme-accent);
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.btn-secondary:hover {
+  background: var(--theme-accent-soft);
+  transform: translateY(-1px);
+}
+
+/* ─── Premium Icon Wrappers ─────────────────────────────────────── */
+.icon-box {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--theme-accent-soft);
+  color: var(--theme-accent);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.icon-box:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--theme-accent);
+  color: white;
+}
+
+/* ─── Glass Cards & Layout ───────────────────────────────────────── */
+.glass-card {
+  background: var(--gn-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ─── Animations ──────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.6s var(--ease-spring) both;
+}
+
+/* ─── Tab Bar & Pills ────────────────────────────────────────────── */
+.tab-pill {
+  padding: 0.6rem 1.25rem;
+  border-radius: 99px;
+  font-weight: 700;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.tab-pill.active {
+  background: var(--theme-accent);
+  color: white;
+  box-shadow: 0 4px 12px var(--theme-accent-soft);
+}
+
+/* ─── Grid Patterns ─────────────────────────────────────────────── */
+.mesh-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(var(--theme-accent), 0.05) 0%, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(var(--theme-accent), 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ─── Polished Animations ────────────────────────────────────────── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Typing Indicator Animation */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+

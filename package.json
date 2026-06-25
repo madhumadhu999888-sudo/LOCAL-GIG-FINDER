@@ -1,0 +1,26 @@
+{
+  "name": "localgigfinder",
+  "private": true,
+  "description": "Full-stack LocalGigFinder application with React frontend and Node/Express backend.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shivasai8009/local-gig-finder.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "start:backend": "npm start --prefix backend",
+    "start:frontend": "npm run dev --prefix frontend",
+    "start:prod": "cross-env NODE_ENV=production SERVE_FRONTEND=true npm start --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently -n api,web -c blue,green \"npm start --prefix backend\" \"npm run dev --prefix frontend\"",
+    "build": "npm run build --prefix frontend",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3"
+  }
+}
