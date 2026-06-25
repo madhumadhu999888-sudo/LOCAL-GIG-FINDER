@@ -1,116 +1,103 @@
-# LocalGigFinder
+# 🚀 Local Gig Finder
 
-A full-stack local gig marketplace connecting **workers** with nearby **businesses**. Post gigs, apply, chat after acceptance, complete work, and rate workers.
+A full-stack MERN application that connects local workers with businesses looking for short-term services and gigs.
 
-## Tech Stack
+## 📌 Features
 
-- **Frontend:** React 18, Vite, Tailwind CSS, Socket.io client
-- **Backend:** Node.js, Express, Socket.io
-- **Database:** MongoDB (Mongoose)
+* User Authentication (JWT)
+* Worker and Business Accounts
+* Role-Based Access Control
+* Post and Manage Gigs
+* Apply for Gigs
+* Real-Time Chat (Socket.io)
+* Notifications System
+* Admin Dashboard
+* Responsive UI
 
-## Features
+## 🛠️ Tech Stack
 
-- Worker & business registration with GPS location
-- Geo-based gig search (within 10 km)
-- Apply, accept/reject applications
-- Real-time chat and notifications
-- Business ratings on gig completion
-- Admin console (stats, users, gigs, moderation)
-- Profile editing for workers and businesses
+### Frontend
 
-## Quick Start (Development)
+* React.js
+* Vite
+* Tailwind CSS
+* Axios
+* React Router DOM
 
-### Prerequisites
+### Backend
 
-- Node.js 18+
-- MongoDB running locally or MongoDB Atlas
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* Socket.io
 
-### Setup
+## 📷 Screenshots
 
-```bash
-# Install dependencies
-npm run install:all
+### Home Page
 
-# Copy environment template and configure
-cp backend/.env.example backend/.env
-# Edit backend/.env — set MONGO_URI and JWT_SECRET
+![Home](screenshots/home.png)
 
-# Create admin user (one time)
-npm run seed:admin --prefix backend
+### Login Page
 
-# Start API + frontend together
+![Login](screenshots/login.png)
+
+### Worker Dashboard
+
+![Worker Dashboard](screenshots/worker-dashboard.png)
+
+### Business Dashboard
+
+![Business Dashboard](screenshots/business-dashboard.png)
+
+### Chat System
+
+![Chat](screenshots/chat.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+## ⚙️ Installation
+
+### Clone Repository
+
+git clone https://github.com/madhumadhu999888-sudo/LOCAL-GIG-FINDER.git
+
+### Backend
+
+cd backend
+
+npm install
+
 npm run dev
-```
 
-- **Frontend:** http://localhost:5173
-- **API health:** http://localhost:5011/api/health
+### Frontend
 
-## Production Deployment (Single Server)
+cd frontend
 
-Build the frontend and serve everything from Express:
+npm install
 
-```bash
-npm run install:all
-npm run build
-```
+npm run dev
 
-Set in `backend/.env`:
+## 🔐 Environment Variables
 
-```env
-NODE_ENV=production
-SERVE_FRONTEND=true
-BIND_HOST=0.0.0.0
-PORT=5011
-MONGO_URI=mongodb+srv://...
-JWT_SECRET=your-production-secret
-CLIENT_URL=https://your-domain.com
-```
+Create a .env file inside backend:
 
-Start:
+MONGO_URI=your_mongodb_uri
 
-```bash
-npm run start:prod
-```
+JWT_SECRET=your_secret_key
 
-Visit `http://your-server:5011` — API and SPA are served together.
+## 📈 Future Enhancements
 
-## Production Deployment (Split Hosting)
+* Online Payments
+* Advanced Search Filters
+* Reviews & Ratings Analytics
+* Mobile App Version
 
-If frontend (Vercel/Netlify) and API are separate:
+## 👨‍💻 Author
 
-1. Deploy backend with `BIND_HOST=0.0.0.0` and set `CLIENT_URL` to your frontend URL.
-2. Build frontend with `VITE_API_URL=https://your-api.example.com` in `frontend/.env`.
-3. Deploy `frontend/dist` to static hosting.
+Madhusudhan
 
-## Environment Variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `MONGO_URI` | Yes | MongoDB connection string |
-| `JWT_SECRET` | Yes | Secret for signing JWT tokens |
-| `CLIENT_URL` | No | Frontend origin for CORS (default: localhost:5173) |
-| `PORT` | No | API port (default: 5011) |
-| `BIND_HOST` | No | Host bind (use `0.0.0.0` in cloud) |
-| `EMAIL_USER` / `EMAIL_PASS` | No | Gmail SMTP for password reset emails |
-| `VITE_API_URL` | No | Frontend API base URL (production split deploy) |
-
-## Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start backend + Vite dev server |
-| `npm run build` | Build frontend to `frontend/dist` |
-| `npm run start:prod` | Run production server (API + static frontend) |
-| `npm run seed:admin --prefix backend` | Create admin account |
-
-## User Roles
-
-| Role | Dashboard |
-|------|-----------|
-| Worker | `/worker` — find gigs, apply, chat |
-| Business | `/business` — post gigs, manage applicants |
-| Admin | `/admin` — platform overview |
-
-## License
-
-Private project.
+GitHub: https://github.com/madhumadhu999888-sudo
